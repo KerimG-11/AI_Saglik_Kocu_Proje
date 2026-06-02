@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Mikro Saglik Kocu</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <h2>AI Mikro Koc</h2>
+        <nav>
+          <button data-view="dashboard" class="menu-btn active">Dashboard</button>
+          <button data-view="health-form" class="menu-btn">Saglik Verisi Girisi</button>
+          <button data-view="history" class="menu-btn">Gecmis Veriler</button>
+          <button data-view="recommendations" class="menu-btn">Oneriler</button>
+        </nav>
+        <button id="logoutBtn" class="logout-btn">Cikis Yap</button>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button id="mobileMenuBtn" class="mobile-menu-btn">Menu</button>
+          <h1>AI Mikro Saglik Kocu</h1>
+          <span id="userLabel"></span>
+        </header>
+
+        <section id="authView" class="auth-wrapper">
+          <div class="auth-card">
+            <h2 id="authTitle">Giris Yap</h2>
+            <form id="authForm">
+              <div id="nameGroup" class="hidden">
+                <label for="name">Isim</label>
+                <input type="text" id="name" placeholder="Ad Soyad" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="ornek@email.com" required />
+              </div>
+              <div>
+                <label for="password">Sifre</label>
+                <input type="password" id="password" minlength="6" required />
+              </div>
+              <button type="submit" id="authSubmitBtn">Giris Yap</button>
+            </form>
+            <p id="authToggleText">
+              Hesabin yok mu?
+              <a href="#" id="toggleAuthMode">Kayit Ol</a>
+            </p>
+            <p class="message" id="authMessage"></p>
+          </div>
+        </section>
+
+        <section id="dashboardView" class="view hidden">
+          <div class="cards-grid">
+            <article class="card"><h3>Uyku (Saat)</h3><p id="sleepValue">-</p></article>
+            <article class="card"><h3>Adim</h3><p id="stepValue">-</p></article>
+            <article class="card"><h3>Su (L)</h3><p id="waterValue">-</p></article>
+            <article class="card"><h3>Stres</h3><p id="stressValue">-</p></article>
+          </div>
+          <div class="split-grid">
+            <article class="card">
+              <h3>Gunluk Oneriler</h3>
+              <ul id="dailyRecommendations"></ul>
+            </article>
+            <article class="card">
+              <h3>Bildirimler</h3>
+              <ul id="notificationList"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="healthFormView" class="view hidden">
+          <article class="card form-card">
+            <h3>Saglik Verisi Girisi</h3>
+            <form id="healthForm">
+              <label for="sleepHours">Uyku Suresi (Saat)</label>
+              <input id="sleepHours" type="number" min="0" step="0.1" required />
+
+              <label for="stepCount">Adim Sayisi</label>
+              <input id="stepCount" type="number" min="0" required />
+
+              <label for="waterAmount">Su Tuketimi (L)</label>
+              <input id="waterAmount" type="number" min="0" step="0.1" required />
+
+              <label for="stressLevel">Stres Seviyesi (1-10)</label>
+              <input id="stressLevel" type="number" min="1" max="10" required />
+
+              <button type="submit">Veriyi Kaydet</button>
+            </form>
+            <p class="message" id="healthMessage"></p>
+          </article>
+        </section>
+
+        <section id="historyView" class="view hidden">
+          <article class="card">
+            <h3>Gecmis Saglik Verileri</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tarih</th>
+                    <th>Uyku</th>
+                    <th>Adim</th>
+                    <th>Su</th>
+                    <th>Stres</th>
+                  </tr>
+                </thead>
+                <tbody id="historyTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section id="recommendationsView" class="view hidden">
+          <article class="card">
+            <h3>Kisisel Mikro Oneriler</h3>
+            <ul id="recommendationList"></ul>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

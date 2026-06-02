@@ -1,0 +1,11 @@
+{
+  "name": "ai-mikro-saglik-kocu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Mikro Saglik Kocu full-stack web uygulamasi",
+  "scripts": {
+    "dev": "npm --prefix server run dev",
+    "start": "npm --prefix server run start",
+    "install:all": "npm install && npm --prefix server install"
+  }
+}
